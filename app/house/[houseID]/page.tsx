@@ -10,7 +10,10 @@ import Bed from '../../../public/images/bed.svg'
 import Avaliable from '../../../public/images/avaliable.svg'
 import None from '../../../public/images/none.svg'
 import Image from 'next/image'
-import { GetServerSidePropsContext } from 'next'
+
+interface Params {
+  houseID: string
+}
 
 async function getHouseId(houseID: string) {
   try {
@@ -27,8 +30,8 @@ async function getHouseId(houseID: string) {
   }
 }
 
-export default async function HouseID({ params }: GetServerSidePropsContext) {
-  const houseID = await getHouseId(params!.houseID as string)
+export default async function HouseID({ params }: { params: Params }) {
+  const houseID = await getHouseId(params.houseID)
   console.log(houseID)
   return (
     <>
