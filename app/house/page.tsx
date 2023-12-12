@@ -4,7 +4,7 @@ import FilterIcon from '../../public/images/filter-slider.svg'
 import DoorIcon from '../../public/images/door.svg'
 import HouseFilter from '@/components/filterServer/HouseFilter'
 import LocationIcon from '../../public/images/location.svg'
-import CarouselComponent from '@/components/carousel/Carousel'
+import ImagesPreview from '@/components/carousel/ImagesPreview'
 
 interface ImageType {
   thumb: string
@@ -71,7 +71,7 @@ export default async function Page() {
                   key={index}
                   className="w-[330px] bg-white  rounded-md flex flex-col  rounded-2 overflow-hidden  shadow-boxItem  md:w-full"
                 >
-                  <CarouselComponent item={item.images} />
+                  <ImagesPreview item={item.images} />
 
                   <div className=" cursor-pointer">
                     <div className="flex flex-row items-center px-3 pb-2 pt-5 border-b border-[#acb2af]">
