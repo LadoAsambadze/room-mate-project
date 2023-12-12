@@ -36,14 +36,16 @@ function ImgPreview({ item }: ImageTypes) {
       >
         Prev
       </button>
-      <Image
+      <img
         src={item[currentId].thumb}
         style={{
           minWidth: '100%',
           scrollSnapAlign: 'start',
         }}
+       
         alt="House Image"
       />
+
       <button
         onClick={handleNext}
         style={{ zIndex: 1, position: 'absolute', right: 0, top: '50%' }}
