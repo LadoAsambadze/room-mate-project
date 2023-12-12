@@ -1,30 +1,34 @@
-import FilterLoop from "../../public/images/filter-loop.png";
-import Image from "next/image";
-import axios from "axios";
-
-import HouseSelect from "../filterClient/HouseSelect";
+import FilterLoop from '../../public/images/filter-loop.png'
+import Image from 'next/image'
+import axios from 'axios'
+import HouseSelect from '../filterClient/HouseSelect'
 
 interface DataType {
-  title: string;
-  id: string;
+  title: string
+  id: string
 }
 interface FilterType {
-  id: string;
-  title: string;
-  search_type: string;
-  data: DataType[];
+  id: string
+  title: string
+  search_type: string
+  data: DataType[]
 }
 
 async function getFilters() {
-  const res = await axios.get("https://api.roommategeorgia.ge/flats/filters");
-  if (!res.data) {
-    throw new Error("Failed to fetch data");
+  try {
+    const res = await axios.get('https://api.roommategeorgia.ge/flats/filters')
+    if (!res.data) {
+      throw new Error('Failed to fetch data')
+    }
+    return res.data
+  } catch (error) {
+    console.error(error)
+    return []
   }
-  return res.data;
 }
 
 export default async function HouseFilter() {
-  const filterList: FilterType[] = await getFilters();
+  const filterList: FilterType[] = await getFilters()
 
   return (
     <>
@@ -52,5 +56,5 @@ export default async function HouseFilter() {
         </div>
       </div>
     </>
-  );
+  )
 }
