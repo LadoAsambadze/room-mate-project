@@ -8,26 +8,28 @@ import 'react-multi-carousel/lib/styles.css'
 export default function CarouselComponent({ item }: any) {
   return (
     <>
-      <Carousel responsive={responsive} infinite={true}>
-        {item.map((image: any, i: any) => (
-          <div
-            key={i}
-            style={{
-              position: 'relative',
-              width: '100%',
-              height: '200px',
-              cursor: 'pointer',
-            }}
-          >
-            <Image
-              src={image.thumb}
-              alt="House image"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        ))}
-      </Carousel>
+      <div className="w-full h-[200px] relative">
+        <Carousel responsive={responsive} infinite={true}>
+          {item.map((image: any, i: any) => (
+            <div
+              key={i}
+              style={{
+                position: 'relative',
+                width: '100%',
+                height: '200px',
+                cursor: 'pointer',
+              }}
+            >
+              <Image
+                src={image.thumb}
+                alt="House image"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          ))}
+        </Carousel>
+      </div>
     </>
   )
 }

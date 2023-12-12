@@ -71,9 +71,8 @@ export default async function Page() {
                   key={index}
                   className="w-[330px] bg-white  rounded-md flex flex-col  rounded-2 overflow-hidden  shadow-boxItem  md:w-full"
                 >
-                  <div className="w-full relative">
-                    <CarouselComponent item={item.images} />
-                  </div>
+                  <CarouselComponent item={item.images} />
+
                   <div className=" cursor-pointer">
                     <div className="flex flex-row items-center px-3 pb-2 pt-5 border-b border-[#acb2af]">
                       <Image src={DoorIcon} alt="Door Icon" />
