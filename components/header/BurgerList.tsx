@@ -1,19 +1,21 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import './_header.scss'
+import Link from 'next/link'
 
 export default function BurgerList() {
   return (
     <div
       className="burgerList"
-      // style={{
-      //   transform: !menu ? 'translateY(100%)' : 'translateY(-100%)',
-      // }}
+      style={{
+        transform: false ? 'translateY(100%)' : 'translateY(-100%)',
+      }}
     >
-      <div className="mobileHeadersDiv">
+      <Link href="/" className="mobileHeadersDiv">
         <h1 style={{ marginLeft: '-0.5px' }} className="headers">
           Home
         </h1>
-      </div>
+      </Link>
       <div className="mobileHeadersDiv">
         <svg
           className="icon"
@@ -27,7 +29,8 @@ export default function BurgerList() {
         </svg>
         <h1 className="headers">Find a Roomate</h1>
       </div>
-      <div className="mobileHeadersDiv">
+
+      <Link href="house" className="mobileHeadersDiv">
         <svg
           className="icon"
           width="24"
@@ -43,7 +46,8 @@ export default function BurgerList() {
           />
         </svg>
         <h1 className="headers">rent an apartment</h1>
-      </div>
+      </Link>
+
       <div className="mobileHeadersDiv">
         <svg
           className="icon"

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import './_header.scss'
 import BurgerList from './BurgerList'
 import WebsiteLogo from '../../public/images/WebsiteLogo.png'
+import Link from 'next/link'
 
 export default function Header() {
   return (
@@ -18,9 +19,10 @@ export default function Header() {
           className="rightSide"
           style={{ display: 'flex', flexDirection: 'row' }}
         >
-          <div className="headersDiv">
+          <Link href="/" className="headersDiv">
             <h1 className="headers">Home</h1>
-          </div>
+          </Link>
+
           <div className="headersDiv">
             <svg
               className="icon"
@@ -34,7 +36,8 @@ export default function Header() {
             </svg>
             <h1 className="headers">Find a Roommate</h1>
           </div>
-          <div className="headersDiv">
+
+          <Link href="/house" className="headersDiv">
             <svg
               className="icon"
               width="24"
@@ -50,7 +53,8 @@ export default function Header() {
               />
             </svg>
             <h1 className="headers">rent an apartment</h1>
-          </div>
+          </Link>
+
           <div className="headersDiv">
             <svg
               className="icon"
