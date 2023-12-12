@@ -5,6 +5,7 @@ import DoorIcon from '../../public/images/door.svg'
 import HouseFilter from '@/components/filterServer/HouseFilter'
 import LocationIcon from '../../public/images/location.svg'
 import ImagesPreview from '@/components/carousel/ImagesPreview'
+import Link from 'next/link'
 
 interface ImageType {
   thumb: string
@@ -87,10 +88,11 @@ export default async function Page() {
                           {item.district.title}
                         </span>
                       </div>
-
-                      <span className=" text-[black] ml-2 text-xs">
-                        {item.price} total rent
-                      </span>
+                      <Link href={`house/${item.id}`}>
+                        <span className="text-[black] ml-2 text-xs">
+                          {item.price} total rent
+                        </span>
+                      </Link>
                     </div>
                   </div>
                 </div>
