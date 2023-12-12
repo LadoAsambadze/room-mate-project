@@ -29,6 +29,7 @@ async function getHouseId(houseID: string) {
 
 export default async function HouseID({ params }: GetServerSidePropsContext) {
   const houseID = await getHouseId(params!.houseID as string)
+  console.log(houseID)
   return (
     <>
       <div className=" py-4 px-8 w-full min-h-screen bg-[#F7F7F7]  desktop:px-[270px]">
