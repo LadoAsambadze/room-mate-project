@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import React, { useState } from 'react'
 
 interface ImageTypes {
@@ -35,12 +36,13 @@ function ImgPreview({ item }: ImageTypes) {
       >
         Prev
       </button>
-      <img
+      <Image
         src={item[currentId].thumb}
         style={{
           minWidth: '100%',
           scrollSnapAlign: 'start',
         }}
+        alt="House Image"
       />
       <button
         onClick={handleNext}
