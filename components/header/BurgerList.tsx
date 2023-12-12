@@ -2,13 +2,15 @@
 import React, { useState } from 'react'
 import './_header.scss'
 import Link from 'next/link'
+import useMenu from '@/store/useMenu'
 
 export default function BurgerList() {
+  const menu = useMenu((state) => state.menu)
   return (
     <div
       className="burgerList"
       style={{
-        transform: false ? 'translateY(100%)' : 'translateY(-100%)',
+        transform: menu ? 'translateY(-100%)' : 'translateY(100%)',
       }}
     >
       <Link href="/" className="mobileHeadersDiv">
