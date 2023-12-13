@@ -4,9 +4,18 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import '../../styles/statement.scss'
 
-export default function SelectedImage({ houseID }: any) {
+interface ImageType {
+  thumb: string
+  original: string
+}
+
+interface HouseTypes {
+  houseID: { images: ImageType[] }
+}
+
+export default function SelectedImage({ houseID }: HouseTypes) {
   const renderThumbs = () => {
-    return houseID?.images?.map((el: any, i: any) => {
+    return houseID?.images?.map((el, i) => {
       return (
         <div key={i}>
           <img src={el.thumb} />
@@ -18,7 +27,7 @@ export default function SelectedImage({ houseID }: any) {
   return (
     <div className="houseStatement">
       <Carousel infiniteLoop swipeable emulateTouch renderThumbs={renderThumbs}>
-        {houseID?.images?.map((el: any, i: any) => {
+        {houseID?.images?.map((el, i) => {
           return (
             <div key={i}>
               <img src={el.original} />

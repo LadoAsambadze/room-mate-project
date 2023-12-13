@@ -6,7 +6,15 @@ import { useState } from 'react'
 import FilterIcon from '../../public/images/filter-slider.svg'
 import FilterLoop from '../../public/images/filter-loop.png'
 
-export default function MobileFilter({ filterList }: any) {
+interface FilterListType {
+  title: string
+}
+
+interface Props {
+  filterList: FilterListType[]
+}
+
+export default function MobileFilter({ filterList }: Props) {
   const [filter, setFilter] = useState(false)
 
   return (
@@ -36,7 +44,7 @@ export default function MobileFilter({ filterList }: any) {
    xl:bg-[#F7F7F7]  "
         >
           {filterList &&
-            filterList.map((item: any, index: any) => (
+            filterList.map((item, index) => (
               <div key={index} className="flex flex-col w-full">
                 <label htmlFor={item.title} className="text-base">
                   {item.title}
