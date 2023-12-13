@@ -1,11 +1,12 @@
 import axios from 'axios'
 import Image from 'next/image'
-import FilterIcon from '../../public/images/filter-slider.svg'
+
 import DoorIcon from '../../public/images/door.svg'
-import HouseFilter from '@/components/filterServer/HouseFilter'
+import HouseFilter from '@/components/filterClient/HouseFilter'
 import LocationIcon from '../../public/images/location.svg'
 import ImagesPreview from '@/components/carousel/ImagesPreview'
 import Link from 'next/link'
+import MobileFilter from '@/components/filterClient/MobileFilter'
 
 interface ImageType {
   thumb: string
@@ -21,6 +22,30 @@ interface HouseType {
   images: ImageType[]
 }
 
+interface DataType {
+  title: string
+  id: string
+}
+interface FilterType {
+  id: string
+  title: string
+  search_type: string
+  data: DataType[]
+}
+
+async function getFilters() {
+  try {
+    const res = await axios.get('https://api.roommategeorgia.ge/flats/filters')
+    if (!res.data) {
+      throw new Error('Failed to fetch data')
+    }
+    return res.data
+  } catch (error) {
+    console.error(error)
+    return []
+  }
+}
+
 async function getHouse() {
   const res = await axios.get('https://api.roommategeorgia.ge/flats')
   if (!res.data) {
@@ -32,34 +57,15 @@ async function getHouse() {
 
 export default async function Page() {
   const house: HouseType[] = await getHouse()
+  const filterList: FilterType[] = await getFilters()
 
   return (
     <>
-      <div
-        className="lg:hidden"
-        style={{
-          position: 'absolute',
-          transform: false ? 'translateX(0%)' : 'translateX(-120%)',
-          zIndex: 330000,
-          transition: '0.3s',
-          top: 70,
-        }}
-      >
-        <HouseFilter />
-      </div>
+      <MobileFilter filterList={filterList} />
       <>
-        <div className="w-full flex  items-center justify-center bg-[#F7F7F7]  pt-5 pb-2 md:px-12 lg:px-12 lg:flex-row desktop:px-60">
-          <div className="flex items-center  w-[350px] md:flex-start md:w-full lg:hidden ">
-            <Image
-              src={FilterIcon}
-              alt="Filter Icon"
-              className="cursor-pointer"
-            />
-          </div>
-        </div>
         <div className="w-full min-h-screen flex flex-col items-start justify-center py-2 bg-[#F7F7F7] md:px-12 lg:flex-row  lg:px-12 desktop:px-60 ">
           <div className="hidden lg:flex lg:w-[350px]">
-            <HouseFilter />
+            <HouseFilter filterList={filterList} />
           </div>
           <div
             className={`${

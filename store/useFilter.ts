@@ -7,7 +7,7 @@ interface FilterStore {
 
 const useFilter = create<FilterStore>(
   (set: StoreApi<FilterStore>[`setState`]) => ({
-    Filter: true,
+    Filter: false,
     setFilter: (newFilter: boolean) => set(() => ({ Filter: newFilter })),
   })
 )
