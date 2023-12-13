@@ -6,6 +6,7 @@ import useMenu from '@/store/useMenu'
 
 export default function BurgerList() {
   const menu = useMenu((state) => state.menu)
+  const setMenu = useMenu((state) => state.setMenu)
   return (
     <div
       className="burgerList"
@@ -13,7 +14,7 @@ export default function BurgerList() {
         transform: menu ? 'translateY(-100%)' : 'translateY(100%)',
       }}
     >
-      <Link href="/" className="mobileHeadersDiv">
+      <Link href="/" className="mobileHeadersDiv" onClick={() => setMenu(true)}>
         <h1 style={{ marginLeft: '-0.5px' }} className="headers">
           Home
         </h1>
@@ -32,7 +33,11 @@ export default function BurgerList() {
         <h1 className="headers">Find a Roomate</h1>
       </div>
 
-      <Link href="/house" className="mobileHeadersDiv">
+      <Link
+        href="/house"
+        className="mobileHeadersDiv"
+        onClick={() => setMenu(true)}
+      >
         <svg
           className="icon"
           width="24"
