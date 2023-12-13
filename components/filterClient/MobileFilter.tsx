@@ -44,21 +44,19 @@ export default function MobileFilter({ filterList }: any) {
                 <HouseSelect item={item} />
               </div>
             ))}
-          <div className="w-full  rounded-md bg-[#19A463]  py-3 flex flex-row items-center justify-center mt-5 cursor-pointer">
+          <div
+            onClick={() => {
+              setFilter(!filter)
+            }}
+            className="w-full  rounded-md bg-[#19A463]  py-3 flex flex-row items-center justify-center mt-5 cursor-pointer"
+          >
             <Image
               src={FilterLoop}
               alt="Filter loop icon"
               width={20}
               height={20}
             />
-            <span
-              className="ml-2 text-white text-xs "
-              onClick={() => {
-                setFilter(!filter)
-              }}
-            >
-              Filter
-            </span>
+            <span className="ml-2 text-white text-xs ">Filter</span>
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ import Bed from '../../../public/images/bed.svg'
 import Avaliable from '../../../public/images/avaliable.svg'
 import None from '../../../public/images/none.svg'
 import Image from 'next/image'
+import SelectedImage from '@/components/carousel/SelectedImage'
 
 interface Params {
   houseID: string
@@ -33,10 +34,10 @@ async function getHouseId(houseID: string) {
 export default async function HouseID({ params }: { params: Params }) {
   const houseID = await getHouseId(params.houseID)
 
-  
   return (
     <>
-      <div className=" py-4 px-8 w-full min-h-screen bg-[#F7F7F7]  desktop:px-[270px]">
+      <div className=" py-4 px-8 w-full min-h-screen bg-[#F7F7F7]  desktop:px-[270px] overflow-x-hidden">
+        <SelectedImage houseID={houseID} />
         <div className="flex flex-col  items-center w-full">
           <div
             id="Location Price Section"
