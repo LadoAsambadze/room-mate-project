@@ -32,7 +32,7 @@ export default function BurgerList() {
         <h1 className="headers">Find a Roomate</h1>
       </div>
 
-      <Link href="house" className="mobileHeadersDiv">
+      <Link href="/house" className="mobileHeadersDiv">
         <svg
           className="icon"
           width="24"

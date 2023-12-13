@@ -74,7 +74,8 @@ export default async function Page() {
           >
             {house && house.length > 0 ? (
               house.map((item, index) => (
-                <div
+                <Link
+                  href={`house/${item.id}`}
                   key={index}
                   className="w-[330px] bg-white  rounded-md flex flex-col  rounded-2 overflow-hidden  shadow-boxItem  md:w-full"
                 >
@@ -94,14 +95,13 @@ export default async function Page() {
                           {item.district.title}
                         </span>
                       </div>
-                      <Link href={`house/${item.id}`}>
-                        <span className="text-[black] ml-2 text-xs">
-                          {item.price} total rent
-                        </span>
-                      </Link>
+
+                      <span className="text-[black] ml-2 text-xs">
+                        {item.price} total rent
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))
             ) : (
               <div>item is zero</div>

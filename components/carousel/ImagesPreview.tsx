@@ -8,13 +8,15 @@ interface ImageTypes {
 function ImgPreview({ item }: ImageTypes) {
   const [currentId, setCurrentId] = useState(0)
 
-  const handleNext = () => {
+  const handleNext = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
     if (currentId < item.length - 1) {
       setCurrentId(currentId + 1)
     }
   }
 
-  const handlePrev = () => {
+  const handlePrev = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
     if (currentId > 0) {
       setCurrentId(currentId - 1)
     }
@@ -41,7 +43,6 @@ function ImgPreview({ item }: ImageTypes) {
           minWidth: '100%',
           scrollSnapAlign: 'start',
         }}
-       
         alt="House Image"
       />
 
