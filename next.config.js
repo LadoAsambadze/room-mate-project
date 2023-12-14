@@ -7,6 +7,12 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  redirects: [
+    {
+      source: '/',
+      destination: '/lol/?path=foo',
+    },
+  ],
 }
 
 module.exports = nextConfig
