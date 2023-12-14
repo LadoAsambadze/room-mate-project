@@ -71,7 +71,9 @@ export default function Header() {
             </svg>
             <span className="headers">Geo</span>
           </div>
-          <button className="btn">Login</button>
+          <Link href="/login">
+            <button className="btn">Login</button>
+          </Link>
           <BurgerIcon />
         </div>
       </div>
