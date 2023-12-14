@@ -2,16 +2,8 @@
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
   "redirects": [
     {
-      "source": "/specific/:path*",
-      "has": [
-        {
-          "type": "query",
-          "key": "page",
-          "value": "home"
-        }
-      ],
-      "permanent": false,
-      "destination": "/another/:path*"
+      "source": "/",
+      "destination": "/lol/?path=foo"
     }
   ]
 }
