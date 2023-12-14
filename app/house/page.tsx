@@ -64,13 +64,12 @@ async function getHouse(searchParams: string) {
 export default async function Page({ searchParams }: any) {
   const house: HouseType[] = await getHouse(queryString.stringify(searchParams))
   const filterList: FilterType[] = await getFilters()
- 
 
   return (
     <>
       <MobileFilter filterList={filterList} />
       <>
-        <div className="w-full min-h-screen flex flex-col items-start justify-center py-2 bg-[#F7F7F7] md:px-12 lg:flex-row  lg:px-12 desktop:px-60 ">
+        <div className="w-full min-h-screen flex flex-col items-start justify-start py-2 bg-[#F7F7F7] md:px-12 lg:flex-row  lg:px-12 desktop:px-60 ">
           <div className="hidden lg:flex lg:w-[350px]">
             <HouseFilter filterList={filterList} />
           </div>

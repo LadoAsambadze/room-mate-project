@@ -9,12 +9,13 @@ import queryString from 'query-string'
 export default function HouseFilter({ filterList }: any) {
   const [select, setSelect] = useState(false)
   const [rangeValues, setRangeValues] = useState({})
+  const [selectedItems, setSelectedItems] = useState<string[]>([])
   const router = useRouter()
 
-  const [selectedItems, setSelectedItems] = useState([])
-
-  console.log(selectedItems)
-  const handleCheckboxChange = (e, id) => {
+  const handleCheckboxChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    id: string
+  ) => {
     if (e.target.checked) {
       setSelectedItems((prevItems) => [...prevItems, id])
     } else {
@@ -55,7 +56,7 @@ export default function HouseFilter({ filterList }: any) {
                 className="absolute mr-2 bg-[#d6d1d1] rounded-sm px-3 py-3 top-20 lg:top-[93px] w-[93%] h-[290px] overflow-y-scroll"
               >
                 {filterList[0].data &&
-                  filterList[0].data.map((obj, index) => (
+                  filterList[0].data.map((obj: any, index: number) => (
                     <label key={index} className="flex flex-row">
                       <input
                         type="checkbox"
