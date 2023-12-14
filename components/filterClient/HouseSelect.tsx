@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ArrowDown from "../../public/images/arrow-down.png";
 
-
-
 export default function HouseSelect({ item }: any) {
   const [select, setSelect] = useState(false);
 

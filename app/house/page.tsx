@@ -1,6 +1,5 @@
 import axios from 'axios'
 import Image from 'next/image'
-
 import DoorIcon from '../../public/images/door.svg'
 import HouseFilter from '@/components/filterClient/HouseFilter'
 import LocationIcon from '../../public/images/location.svg'
@@ -45,19 +44,27 @@ async function getFilters() {
     return []
   }
 }
+import queryString from 'query-string'
+async function getHouse(searchParams: string) {
+  try {
+    const res = await axios.get(
+      `https://api.roommategeorgia.ge/flats?${searchParams}`
+    )
 
-async function getHouse() {
-  const res = await axios.get('https://api.roommategeorgia.ge/flats')
-  if (!res.data) {
-    throw new Error('Failed to fetch data')
+    if (!res.data) {
+      throw new Error('Failed to fetch data')
+    }
+    return res.data.data
+  } catch (error) {
+    console.error(error)
+    return []
   }
-
-  return res.data.data
 }
 
-export default async function Page() {
-  const house: HouseType[] = await getHouse()
+export default async function Page({ searchParams }: any) {
+  const house: HouseType[] = await getHouse(queryString.stringify(searchParams))
   const filterList: FilterType[] = await getFilters()
+ 
 
   return (
     <>
