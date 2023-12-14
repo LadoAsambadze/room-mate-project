@@ -40,6 +40,7 @@ export default function MobileFilter({ filterList }: any) {
     const districtQuery = `districts=${selectedItems.join('%2C')}`
     const query = `?${queryString.stringify(rangeValues)}&${districtQuery}`
     router.push(`/house${query}`)
+    setFilter(!filter)
   }
 
   return (
@@ -154,7 +155,6 @@ export default function MobileFilter({ filterList }: any) {
             ))}
           <div
             onClick={() => {
-              setFilter(!filter)
               handleClick()
             }}
             className="w-full  rounded-md bg-[#19A463]  py-3 flex flex-row items-center justify-center mt-5 cursor-pointer"
