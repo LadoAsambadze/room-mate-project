@@ -1,0 +1,23 @@
+{
+  "redirects": [
+    {
+      "source": "/house/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "price_from"
+        },
+        {
+          "type": "query",
+          "key": "price_to"
+        },
+        {
+          "type": "query",
+          "key": "location"
+        }
+      ],
+      "permanent": false,
+      "destination": "/house/:path*"
+    }
+  ]
+}
