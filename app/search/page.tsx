@@ -1,13 +1,21 @@
 import axios from 'axios'
 
 import UserCard from '@/components/UserComponents/UserCard'
-import { token } from '@/configs/token'
+
+import { cookies } from 'next/headers'
 
 async function getUsers() {
+  const token = cookies().get('token')
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token?.value}`,
+    },
+  }
 
   const response = await axios.get(
     `${process.env.BASE_URL}/users/search`,
-    token
+    config
   )
   return response.data.data
 }
