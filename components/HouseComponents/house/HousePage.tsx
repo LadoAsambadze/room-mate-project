@@ -5,11 +5,11 @@ import LocationIcon from '../../../public/images/location.svg'
 import ImagesPreview from '@/components/HouseComponents/SmallClientComponents/ImagesPreview'
 import Link from 'next/link'
 import DesktopFilter from '@/components/HouseComponents/houseFilters/DesktopFilter'
+import Pagination from '../HousePagination/HousePagination'
 
 interface ImageType {
   thumb: string
 }
-
 interface HouseType {
   room: number
   price: number
@@ -19,7 +19,6 @@ interface HouseType {
   }
   images: ImageType[]
 }
-
 interface DataType {
   title: string
   id: string
@@ -30,15 +29,18 @@ interface FilterType {
   search_type: string
   data: DataType[]
 }
+interface HouseData {
+  data: HouseType[]
+  meta: any
+}
 interface MainFilterProps {
-  house: HouseType[]
+  house: HouseData
   filterList: FilterType
 }
-
 export default function HousePage({ house, filterList }: MainFilterProps) {
   return (
     <>
-      <div className="w-full min-h-screen flex flex-col items-start justify-start py-2 bg-[#F7F7F7] md:px-12 lg:flex-row  lg:px-12 desktop:px-60 ">
+      <div className="w-full h-full flex flex-col items-start justify-start py-2 bg-[#F7F7F7] md:px-12 lg:flex-row  lg:px-12 desktop:px-60 ">
         <div className="hidden lg:flex lg:w-[350px]">
           <DesktopFilter filterList={filterList} />
         </div>
@@ -47,8 +49,8 @@ export default function HousePage({ house, filterList }: MainFilterProps) {
             false ? 'filterBlur' : ''
           } w-full h-full flex flex-col items-center justify-start gap-6 md:grid md:grid-cols-2 md:gap-6 md:items-start lg:ml-7`}
         >
-          {house && house.length > 0 ? (
-            house.map((item, index) => (
+          {house.data && house.data.length > 0 ? (
+            house.data.map((item, index) => (
               <Link
                 href={`house/${item.id}`}
                 key={index}
@@ -83,6 +85,7 @@ export default function HousePage({ house, filterList }: MainFilterProps) {
           )}
         </div>
       </div>
+      <Pagination meta={house.meta} />
     </>
   )
 }

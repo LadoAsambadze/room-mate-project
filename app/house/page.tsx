@@ -1,7 +1,6 @@
 import axios from 'axios'
 import MobileFilter from '@/components/HouseComponents/houseFilters/MobileFilter'
 import queryString from 'query-string'
-
 import HousePage from '@/components/HouseComponents/house/HousePage'
 
 async function getFilters() {
@@ -24,7 +23,8 @@ async function getHouse(searchParams: string) {
     if (!res.data) {
       throw new Error('Failed to fetch data')
     }
-    return res.data.data
+
+    return res.data
   } catch (error) {
     console.error(error)
     return []
