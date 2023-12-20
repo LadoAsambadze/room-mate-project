@@ -5,20 +5,18 @@ import { token } from '@/configs/token'
 import axios from 'axios'
 
 async function fetchData() {
-  // Get the token from the cookies
-  // const token = cookies().get('token')
+  const token = cookies().get('token')
 
-  // // Set up the config for the axios request
-  // const config = {
-  //   headers: {
-  //     Authorization: `Bearer ${token?.value}`,
-  //   },
-  // }
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token?.value}`,
+    },
+  }
 
   // Make the GET request
   const response = await axios.get(
     'https://api.roommategeorgia.ge/auth/profile',
-    token
+    config
   )
 
   return response.data
