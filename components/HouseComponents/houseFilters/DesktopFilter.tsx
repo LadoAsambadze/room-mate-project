@@ -1,12 +1,13 @@
 'use client'
-import { useState } from 'react'
-import FilterLoop from '../../public/images/filter-loop.png'
+import { useEffect, useState } from 'react'
+import FilterLoop from '../../../public/images/filter-loop.png'
+
 import Image from 'next/image'
-import ArrowDown from '../../public/images/arrow-down.png'
+import ArrowDown from '../../../public/images/arrow-down.png'
 import { useRouter } from 'next/navigation'
 import queryString from 'query-string'
 
-export default function HouseFilter({ filterList }: any) {
+export default function DesktopFilter({ filterList }: any) {
   const [select, setSelect] = useState(false)
   const [rangeValues, setRangeValues] = useState({})
   const [selectedItems, setSelectedItems] = useState<string[]>([])
@@ -33,9 +34,17 @@ export default function HouseFilter({ filterList }: any) {
   }
 
   const handleClick = () => {
-    const districtQuery = `districts=${selectedItems.join('%2C')}`
-    const query = `?${queryString.stringify(rangeValues)}&${districtQuery}`
+    let districtQuery = ''
+
+    if (selectedItems.length > 0) {
+      districtQuery = `districts=${selectedItems.join('%2C')}`
+    }
+
+    const query = `?${queryString.stringify(rangeValues)}${
+      districtQuery && `&${districtQuery}`
+    }`
     router.push(`/house${query}`)
+    setSelect(false)
   }
 
   return (

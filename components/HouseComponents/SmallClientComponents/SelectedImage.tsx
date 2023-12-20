@@ -2,7 +2,7 @@
 import React from 'react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
-import '../../styles/statement.scss'
+import '../../../styles/statement.scss'
 
 interface ImageType {
   thumb: string

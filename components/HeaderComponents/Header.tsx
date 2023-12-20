@@ -1,11 +1,16 @@
+'use client'
 import Image from 'next/image'
 import './_header.scss'
 import BurgerList from './BurgerList'
 import WebsiteLogo from '../../public/images/WebsiteLogo.png'
 import Link from 'next/link'
-import BurgerIcon from '../burgermenu/BurgerIcon'
+import BurgerIcon from './BurgerIcon'
+import { signOut, useSession } from 'next-auth/react'
 
 export default function Header() {
+  const session = useSession()
+  console.log(session)
+
   return (
     <>
       <div className="main">
@@ -26,7 +31,7 @@ export default function Header() {
             <h1 className="headers">Home</h1>
           </Link>
 
-          <Link href="/searchUser" className="headersDiv">
+          <Link href="/search" className="headersDiv">
             <svg
               className="icon"
               width="20"
@@ -71,9 +76,19 @@ export default function Header() {
             </svg>
             <span className="headers">Geo</span>
           </div>
-          <Link href="/login">
-            <button className="btn">Login</button>
-          </Link>
+
+          {session?.data ? (
+            <>
+              <Link href="#" onClick={() => signOut({ callbackUrl: '/' })}>
+                Log Out
+              </Link>
+              <Link href="/profile">Profile</Link>
+            </>
+          ) : (
+            <Link href="/api/auth/signin">
+              <button className="btn">Login</button>
+            </Link>
+          )}
           <BurgerIcon />
         </div>
       </div>

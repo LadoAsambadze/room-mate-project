@@ -1,19 +1,19 @@
 'use client'
 
 import Image from 'next/image'
-
 import { useState } from 'react'
-import FilterIcon from '../../public/images/filter-slider.svg'
-import FilterLoop from '../../public/images/filter-loop.png'
+import FilterIcon from '../../../public/images/filter-slider.svg'
+import FilterLoop from '../../../public/images/filter-loop.png'
 import { useRouter } from 'next/navigation'
 import queryString from 'query-string'
-import ArrowDown from '../../public/images/arrow-down.png'
+import ArrowDown from '../../../public/images/arrow-down.png'
 
 export default function MobileFilter({ filterList }: any) {
   const [filter, setFilter] = useState(false)
   const [select, setSelect] = useState(false)
   const [rangeValues, setRangeValues] = useState({})
   const [selectedItems, setSelectedItems] = useState<string[]>([])
+ 
 
   const router = useRouter()
   const handleCheckboxChange = (

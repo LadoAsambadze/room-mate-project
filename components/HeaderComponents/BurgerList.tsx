@@ -19,7 +19,7 @@ export default function BurgerList() {
           Home
         </h1>
       </Link>
-      <Link href="/searchUser" className="mobileHeadersDiv">
+      <Link href="/search" className="mobileHeadersDiv">
         <svg
           className="icon"
           width="20"
