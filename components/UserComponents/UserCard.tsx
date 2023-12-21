@@ -4,7 +4,7 @@ import React from 'react'
 import AvatarImg from '../../public/images/avatar.png'
 import Location from '../../public/images/location.svg'
 import Favourite from '../../public/images/fav.png'
-import Pagination from '../HouseComponents/HousePagination/HousePagination'
+import Pagination from '../Pagination/Pagination'
 
 interface Data {
   firstname: string

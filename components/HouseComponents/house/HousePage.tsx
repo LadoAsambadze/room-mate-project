@@ -5,7 +5,7 @@ import LocationIcon from '../../../public/images/location.svg'
 import ImagesPreview from '@/components/HouseComponents/SmallClientComponents/ImagesPreview'
 import Link from 'next/link'
 import DesktopFilter from '@/components/HouseComponents/houseFilters/DesktopFilter'
-import Pagination from '../HousePagination/HousePagination'
+import Pagination from '@/components/Pagination/Pagination'
 
 interface ImageType {
   thumb: string
@@ -38,7 +38,6 @@ interface MainFilterProps {
   filterList: FilterType
 }
 export default function HousePage({ house, filterList }: MainFilterProps) {
-  
   return (
     <>
       <div className="w-full h-full flex flex-col items-start justify-start py-2 bg-[#F7F7F7] md:px-12 lg:flex-row  lg:px-12 desktop:px-60 ">
