@@ -31,7 +31,12 @@ export default async function page({ searchParams }: any) {
 
   return (
     <>
-      <UserCard users={users} />
+      <div
+        className="px-3 pt-12 w-full min-h-screen flex flex-col  items-center bg-[#F7F7F7] gap-y-4
+      sm:px-10 overflow-x-hidden"
+      >
+        <UserCard users={users} />
+      </div>
     </>
   )
 }

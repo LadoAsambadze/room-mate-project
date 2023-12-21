@@ -12,23 +12,27 @@ export default function Pagination({ meta }: any) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  // Calculate the range of pages to display
+  const startPage = Math.max(1, page - 1)
+  const endPage = Math.min(pageCount, startPage + 2)
+
   return (
     <div className="flex justify-center my-4">
       {page > 1 && (
         <button
-          onClick={() => {
-            handlePagination(Number(page) - 1)
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }}
+          onClick={() => handlePagination(Number(page) - 1)}
           className="mx-1 px-4 py-2 bg-blue-500 text-white rounded"
         >
           Previous
         </button>
       )}
-      {Array.from({ length: pageCount }, (_, i) => i + 1).map((num) => (
+      {Array.from(
+        { length: endPage - startPage + 1 },
+        (_, i) => startPage + i
+      ).map((num) => (
         <button
           key={num}
-          onClick={() => handlePagination(num)}
+          onClick={() => handlePagination(Number(page) + 1)}
           className={`mx-1 px-4 py-2 rounded ${
             num === Number(page)
               ? 'bg-blue-500 text-white'
@@ -40,10 +44,7 @@ export default function Pagination({ meta }: any) {
       ))}
       {page < pageCount && (
         <button
-          onClick={() => {
-            handlePagination(Number(page) + 1)
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }}
+          onClick={() => handlePagination(Number(page) + 1)}
           className="mx-1 px-4 py-2 bg-blue-500 text-white rounded"
         >
           Next
