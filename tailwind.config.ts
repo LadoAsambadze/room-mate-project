@@ -17,6 +17,7 @@ module.exports = {
       },
       boxShadow: {
         boxItem: '0px 7px 16px 0px rgba(170, 170, 170, 0.25)',
+        userBoxShadow: '0px 7px 16px 0px rgba(170, 170, 170, 0.25)',
       },
     },
   },

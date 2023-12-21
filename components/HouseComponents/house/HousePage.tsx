@@ -38,6 +38,7 @@ interface MainFilterProps {
   filterList: FilterType
 }
 export default function HousePage({ house, filterList }: MainFilterProps) {
+  
   return (
     <>
       <div className="w-full h-full flex flex-col items-start justify-start py-2 bg-[#F7F7F7] md:px-12 lg:flex-row  lg:px-12 desktop:px-60 ">

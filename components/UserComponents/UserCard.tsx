@@ -4,6 +4,7 @@ import React from 'react'
 import AvatarImg from '../../public/images/avatar.png'
 import Location from '../../public/images/location.svg'
 import Favourite from '../../public/images/fav.png'
+import Pagination from '../HouseComponents/HousePagination/HousePagination'
 
 interface User {
   firstname: string
@@ -17,19 +18,22 @@ interface User {
 export default function UserCard({ users }: { users: User[] }) {
   return (
     <>
-      <div className="px-3 pt-12 w-full min-h-screen flex flex-col  items-center bg-[gray] gap-y-4">
-        {users.map((item, index) => (
+      <div
+        className="px-3 pt-12 w-full min-h-screen flex flex-col  items-center bg-[#F7F7F7] gap-y-4
+      sm:px-10"
+      >
+        {users.data.map((item, index) => (
           <div
             key={index}
-            className="w-[500px]  bg-white flex flex-col py-1 px-2  "
+            className="w-full bg-[#FFF] flex flex-col py-1 px-2 shadow-userBoxShadow md:w-[500px]"
           >
             <div
               id="First Part"
               className="w-full flex flex-row justify-between items-center"
             >
               <div>
-                <span>{item.firstname}</span>
-                <span className="ml-3">{item.age}</span>
+                <span className="text-xs">{item.firstname}</span>
+                <span className="ml-3 text-xs">{item.age} Years old</span>
               </div>
               <span></span>
             </div>
@@ -54,8 +58,10 @@ export default function UserCard({ users }: { users: User[] }) {
                 />
               </div>
 
-              <div className="flex border-t-2 border-b-2 w-full ml-1  overflow-hidden ovs n             ">
-                <span>{item.about_me}</span>
+              <div className="flex border-t-2 border-b-2 w-full ml-1  overflow-hidden            ">
+                <span className="text-xs overflow-ellipsis mt-1 ml-1">
+                  {item.about_me}
+                </span>
               </div>
             </div>
             <div
@@ -69,9 +75,9 @@ export default function UserCard({ users }: { users: User[] }) {
                   height={18}
                   alt="Location Icon"
                 />
-                <div className="ml-2 w-[170px] overflow-hidden whitespace-nowrap   overflow-ellipsis">
+                <div className="ml-2 w-[140px] overflow-hidden whitespace-nowrap   overflow-ellipsis">
                   {item.suitableDistricts.map((el, i) => (
-                    <span key={i}>
+                    <span key={i} className="text-xs">
                       {el} {i < item.suitableDistricts.length - 1 ? ', ' : ''}
                     </span>
                   ))}
@@ -84,14 +90,18 @@ export default function UserCard({ users }: { users: User[] }) {
                   height={18}
                   alt="Favourite click icon"
                 />
-                <span className="ml-2">Favourite</span>
-                <Link href={`/search/${item.id}`} className="ml-2">
+                <span className="ml-2 text-xs">Favourite</span>
+                <Link
+                  href={`/search/${item.id}`}
+                  className="ml-2 text-xs  underline"
+                >
                   View details
                 </Link>
               </div>
             </div>
           </div>
         ))}
+        <Pagination meta={users.meta} />
       </div>
     </>
   )

@@ -8,7 +8,7 @@ export default function Pagination({ meta }: any) {
   const { page, pageCount } = meta
 
   const handlePagination = (newPage: number) => {
-    router.push(`/house?page=${newPage}`)
+    router.push(`?page=${newPage}`)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
