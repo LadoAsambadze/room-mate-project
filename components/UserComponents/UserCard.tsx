@@ -6,7 +6,7 @@ import Location from '../../public/images/location.svg'
 import Favourite from '../../public/images/fav.png'
 import Pagination from '../HouseComponents/HousePagination/HousePagination'
 
-interface User {
+interface Data {
   firstname: string
   age: number
   profile_image?: string
@@ -15,7 +15,12 @@ interface User {
   id: string
 }
 
-export default function UserCard({ users }: { users: User[] }) {
+interface User {
+  data: Data[]
+  meta: any
+}
+
+export default function UserCard({ users }: { users: User }) {
   return (
     <>
       <div
